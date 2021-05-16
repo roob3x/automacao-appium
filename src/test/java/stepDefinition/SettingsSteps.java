@@ -1,7 +1,7 @@
 package stepDefinition;
 
 import GerenciadorDriver.DriverWeb;
-import Interacao.IinteractionAndroidJavaWeb;
+import Interacao.IinteractionAndroidJava;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.GsmCallActions;
 import io.cucumber.java.pt.Dado;
@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.IOException;
 
 public class SettingsSteps{
-    IinteractionAndroidJavaWeb i = new IinteractionAndroidJavaWeb();
+    IinteractionAndroidJava i = new IinteractionAndroidJava();
     WebDriverWait wait = new WebDriverWait(DriverWeb.getDriver(),10);
     @Dado("clicar no menu do lado direito")
     public void clicar_no_menu_do_lado_direito() throws InterruptedException, IOException {
@@ -76,9 +76,6 @@ public class SettingsSteps{
 
     @Quando("clicar em logar")
     public void clicar_em_logar() throws IOException {
-        // Write code here that turns the phrase above into concrete actions
-        //i.clicar(SettingsActivity.BTN_LOGAR);
-       // pegaDriver().findElement(By.id("android:id/button1")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy.id("android:id/button1")));
         DriverWeb.getDriver().findElement(MobileBy.id("android:id/button1")).click();
 
@@ -86,8 +83,7 @@ public class SettingsSteps{
 
     @Entao("validar que o usuario esta logado como {string}")
     public void validar_que_o_usuario_esta_logado_como(String texto) throws IOException {
-        // Write code here that turns the phrase above into concrete actions
-        //i.validarTextoDoElemento(SettingsActivity.LABEL_LOGIN_ERRO,texto,"value");
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy.id("com.leavjenn.hews:id/tv_account")));
         Assert.assertEquals(texto,DriverWeb.getDriver().findElement(MobileBy.id("com.leavjenn.hews:id/tv_account")).getText());
         DriverWeb.getDriver().findElement(MobileBy.id("com.leavjenn.hews:id/layout_login")).click();
@@ -96,21 +92,16 @@ public class SettingsSteps{
 
     @Entao("clicar no botao cancel")
     public void clicar_no_botao_cancel() {
-        // Write code here that turns the phrase above into concrete actions
         DriverWeb.getDriver().findElement(MobileBy.id("android:id/button2")).click();
     }
 
     @Entao("validar mesangem de erro com {string}")
     public void validar_mesangem_de_erro_com(String texto) throws IOException {
-        // Write code here that turns the phrase above into concrete actions
-        //i.validarTextoDoElemento(SettingsActivity.LABEL_LOGIN_ERRO,texto,"value");
+
         Assert.assertEquals(texto,DriverWeb.getDriver().findElement(MobileBy.id("com.leavjenn.hews:id/tv_prompt")).getText());
     }
     @Entao("clicar em deslogar")
     public void clicar_em_deslogar() throws InterruptedException {
-        // Write code here that turns the phrase above into concrete actions
-       // wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy.id("com.leavjenn.hews:id/design_menu_item_text")));
-       // DriverWeb.getDriver().findElement(MobileBy.id("com.leavjenn.hews:id/design_menu_item_text")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy.id("com.leavjenn.hews:id/iv_expander")));
         Thread.sleep(1000);
         DriverWeb.getDriver().findElement(MobileBy.id("com.leavjenn.hews:id/iv_expander")).click();
@@ -118,33 +109,26 @@ public class SettingsSteps{
 
     @Entao("fazer ligacao para o numero {string}")
     public void fazer_ligacao_para_o_numero(String texto) throws InterruptedException {
-        // Write code here that turns the phrase above into concrete actions
-      //  DriverWeb.getDriver().makeGsmCall(PHONE_NUMBER, GsmCallActions.CALL);
-        //Thread.sleep(2000); // pause just for effect
-       // driver.makeGsmCall(PHONE_NUMBER, GsmCallActions.ACCEPT);
+
         DriverWeb.getDriver().makeGsmCall(texto,GsmCallActions.CALL);
     }
     @Entao("aceitar ligacao {string}")
     public void aceitar_ligacao(String texto) throws InterruptedException {
-        // Write code here that turns the phrase above into concrete actions
         Thread.sleep(2000); // pause just for effect
         DriverWeb.getDriver().makeGsmCall(texto, GsmCallActions.ACCEPT);
     }
     @Entao("finalizar ligacao {string}")
     public void finalizar_ligacao(String texto) throws InterruptedException {
-        // Write code here that turns the phrase above into concrete actions
         Thread.sleep(2000);
         DriverWeb.getDriver().makeGsmCall(texto, GsmCallActions.CANCEL);
     }
 
     @Entao("validar que o login esta preenchido com {string}")
     public void validar_que_o_login_esta_preechido_com(String texto) throws InterruptedException {
-        // Write code here that turns the phrase above into concrete actions
         Assert.assertEquals(texto,DriverWeb.getDriver().findElement(MobileBy.id("com.leavjenn.hews:id/et_user_name")).getText());
     }
     @Entao("validar que a senha esta preenchido com {string}")
     public void validar_que_a_senha_esta_preenchido_com(String texto) throws InterruptedException {
-        // Write code here that turns the phrase above into concrete actions
         Assert.assertEquals(texto,DriverWeb.getDriver().findElement(MobileBy.id("com.leavjenn.hews:id/et_password")).getText());
     }
 }
