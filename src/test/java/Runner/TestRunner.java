@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 @CucumberOptions(
         features = "/Users/robertofilho/IdeaProjects/automacao-appium/src/test/resources",
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        tags = "@Rob",
+        tags = "@Teste",
         glue = {"stepDefinition"},
         plugin =
 
