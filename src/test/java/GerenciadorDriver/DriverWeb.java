@@ -24,16 +24,7 @@ public class DriverWeb {
         driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
         return capabilities;
     }
-/**
-    public void iniciarDriver(){
-        try {
-            driver = new AppiumDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), configuracaoEmulador());
-        }
-        catch (MalformedURLException exception){
-            System.out.println("url invalida"+ exception.getMessage());
-        }
-    }
- */
+
     public static AndroidDriver getDriver(){
         return driver;
     }
