@@ -1,11 +1,8 @@
 package Interface;
 
-import GerenciadorDriver.DriverWeb;
+import GerenciadorDriver.DriverAndroid;
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.android.GsmCallActions;
-import io.appium.java_client.functions.ExpectedCondition;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,7 +12,7 @@ import java.io.IOException;
 
 public interface Interation {
     default void esperarElementoExistir(By element, int timeout) throws IOException {
-        WebDriverWait wait = new WebDriverWait(DriverWeb.getDriver(), timeout);
+        WebDriverWait wait = new WebDriverWait(DriverAndroid.getDriver(), timeout);
 
            // wait.until(ExpectedConditions.visibilityOf(element));
             wait.until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -23,7 +20,7 @@ public interface Interation {
     }
 
     default void esperarElementoExistirAndroid(AndroidElement element, int timeout) throws IOException {
-        WebDriverWait wait = new WebDriverWait(DriverWeb.getDriver(), timeout);
+        WebDriverWait wait = new WebDriverWait(DriverAndroid.getDriver(), timeout);
 
         wait.until(ExpectedConditions.visibilityOf(element));
         // wait.until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -31,7 +28,7 @@ public interface Interation {
     }
 
     default void validarTextoDoElemento(MobileBy element, String texto, String atribuiteType) throws IOException {
-        Assert.assertEquals(texto,DriverWeb.getDriver().findElement(element).getAttribute(atribuiteType));
+        Assert.assertEquals(texto, DriverAndroid.getDriver().findElement(element).getAttribute(atribuiteType));
     }
 
 }

@@ -11,7 +11,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class DriverWeb {
+public class DriverAndroid {
     //static AppiumDriver<MobileElement> driver;
     static AndroidDriver driver;
 
